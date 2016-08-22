@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="W9V-e0-kPQ">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--闭包实例-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="ClosureDemo" customModuleProvider="target" sceneMemberID="viewController">
@@ -18,34 +18,79 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H13-Uq-iYG">
-                                <rect key="frame" x="20" y="38" width="118" height="30"/>
+                                <rect key="frame" x="20" y="97" width="118" height="30"/>
                                 <state key="normal" title="闭包实例1"/>
                                 <connections>
                                     <action selector="demo1:" destination="BYZ-38-t0r" eventType="touchUpInside" id="gIQ-yx-DiF"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uG8-yZ-IOE">
-                                <rect key="frame" x="20" y="84" width="118" height="30"/>
+                                <rect key="frame" x="20" y="143" width="118" height="30"/>
                                 <state key="normal" title="闭包实例2"/>
                                 <connections>
                                     <action selector="closureDemo2:" destination="BYZ-38-t0r" eventType="touchUpInside" id="j6q-Wf-uj0"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zSp-2S-Xwb">
-                                <rect key="frame" x="20" y="128" width="118" height="30"/>
+                                <rect key="frame" x="20" y="187" width="118" height="30"/>
                                 <state key="normal" title="闭包实例3"/>
                                 <connections>
                                     <action selector="closureDemo3:" destination="BYZ-38-t0r" eventType="touchUpInside" id="2sC-zE-cQx"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v2T-rJ-pzg">
+                                <rect key="frame" x="20" y="279" width="335" height="30"/>
+                                <state key="normal" title="演示内存泄露"/>
+                                <connections>
+                                    <segue destination="ZVW-A5-EWn" kind="show" id="SAw-UK-S2u"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
+                    <navigationItem key="navigationItem" title="闭包实例" id="g5h-Ro-xZO"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="185.5" y="389.5"/>
+            <point key="canvasLocation" x="765.5" y="264.5"/>
+        </scene>
+        <!--SecondVC-->
+        <scene sceneID="6LW-ad-9PH">
+            <objects>
+                <viewController id="ZVW-A5-EWn" customClass="SecondVC" customModule="ClosureDemo" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="0q4-AN-hB5"/>
+                        <viewControllerLayoutGuide type="bottom" id="225-eR-O3w"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="jsE-cN-TcP">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HHB-Jm-O4X" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1222.5" y="264.5"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="aad-TG-VoA">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="W9V-e0-kPQ" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="3IY-g7-N1N">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="CM1-gG-88u"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tWg-cj-Ed6" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="177" y="265"/>
         </scene>
     </scenes>
 </document>
