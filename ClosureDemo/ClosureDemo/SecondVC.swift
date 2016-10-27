@@ -16,21 +16,47 @@ class SecondVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.title = "第二个界面"
+        self.title = "循环引用"
         
-        // 声明当前控制器为所引用
-        weak var weakSelf = self
-        
-        // 执行耗时操作，在闭包中完成其他功能
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) {
-            self.download {
+        // 方式一 声明当前控制器为所引用 (推荐)
+        DispatchQueue.global().async {
             
-                dispatch_async(dispatch_get_main_queue(), {
-                    print("回到主线程")
-                    weakSelf!.view.backgroundColor = UIColor.grayColor()
-                })
+            self.download({
                 
-            }
+                weak var weakSelf = self
+                
+                DispatchQueue.main.sync {
+                    weakSelf?.view.backgroundColor = UIColor.gray
+                }
+                
+            })
+            
+        }
+        
+        // 方式二 [ weak self ] in (推荐)
+        DispatchQueue.global().async {
+            
+            self.download({ [weak self] in
+                
+                DispatchQueue.main.sync {
+                    self?.view.backgroundColor = UIColor.gray
+                }
+                
+            })
+            
+        }
+        
+        // 方式三 [ unowned self ] in (不推荐)
+        DispatchQueue.global().async {
+            
+            self.download({ [unowned self] in
+                
+                DispatchQueue.main.sync {
+                    self.view.backgroundColor = UIColor.gray
+                }
+                
+            })
+            
         }
   
     }
@@ -38,7 +64,7 @@ class SecondVC: UIViewController {
     /**
         模拟操作
      */
-    func download(finished:()->Void) {
+    func download(_ finished: @escaping ()->Void) {
         
         print("执行耗时操作")
         finished()
@@ -51,22 +77,6 @@ class SecondVC: UIViewController {
     deinit {
         print("控制器销毁")
     }
-    
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

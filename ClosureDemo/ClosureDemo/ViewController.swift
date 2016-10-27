@@ -17,12 +17,12 @@ class ViewController: UIViewController {
     /**
         闭包实例1
      */
-    func closureDemo1(sayHello:()->()) {
+    func closureDemo1(_ sayHello:()->()) {
         print("closureDemo1------去上班............")
         sayHello()
     }
     
-    @IBAction func demo1(sender: UIButton) {
+    @IBAction func demo1(_ sender: UIButton) {
         
         // 如果只有函数只有1个参数，并且为闭包，可以省略函数名后的()
         closureDemo1() {
@@ -38,13 +38,13 @@ class ViewController: UIViewController {
     /**
         闭包实例2
      */
-    func closureDemo2(name:String,sayHello: (name:String) ->()) {
-        sayHello(name: name)
+    func closureDemo2(_ name:String,sayHello: (_ name:String) ->()) {
+        sayHello(name)
     }
     
-    @IBAction func closureDemo2(sender: UIButton) {
+    @IBAction func closureDemo2(_ sender: UIButton) {
         
-        print("closureDemo1-----去上班")
+        print("closureDemo2-----去上班")
         closureDemo2("张三") { (name) in
             print("帮\(name)刷卡~~~~~~~~~~")
         }
@@ -54,12 +54,13 @@ class ViewController: UIViewController {
     /**
         闭包实例3
      */
-    func closureDemo3( method1:()->Int, method2:(count:Int)->Void) {
+    func closureDemo3( _ method1:()->Int, method2:(_ count:Int)->Void) {
         
-        method2(count: method1())
+        method2(method1())
         
     }
-    @IBAction func closureDemo3(sender: UIButton) {
+    
+    @IBAction func closureDemo3(_ sender: UIButton) {
         
         print("一天上班打几次卡？")
         
@@ -71,28 +72,5 @@ class ViewController: UIViewController {
         
     }
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
-
 }
 
